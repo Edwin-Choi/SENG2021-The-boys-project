@@ -8,12 +8,16 @@
     float: left;
     padding: 15px;
     text-align: center;
-    width: 100%;
 }
 .navbar-brand {float:none;}
 
 .map-canvas{
     height: 100vh;
+}
+
+.navbar-img{
+    position: absolute;
+    left: 30px;
 }
 
 .navbar-default {
