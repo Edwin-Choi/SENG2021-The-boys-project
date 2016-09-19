@@ -204,7 +204,10 @@
                     var params = "pac-input="+ input.value; 
                     http.send(params);
                     http.onload = function() {
-                        alert(http.responseText);
+                        //JSON objects here
+                        var allInfo = JSON.parse(http.responseText);
+                        var responseArray = allInfo.response;
+                        
                     }
 
 
