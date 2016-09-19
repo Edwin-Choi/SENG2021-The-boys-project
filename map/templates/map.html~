@@ -206,10 +206,14 @@
                     http.onload = function() {
                         //JSON objects here
                         var allInfo = JSON.parse(http.responseText);
-                        var responseArray = allInfo.response;
-                        
+                        if(allInfo.response.application_response_code == 101){
+                            var responseArray = allInfo.response.listings;
+                            for(var i = 0 ; i < responseArray.length ; i++){
+                                console.log(i);
+                                addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].titles);
+                            }
+                        }
                     }
-
 
                     // for each place, get icon, name and location
                     var bounds = new google.maps.LatLngBounds();
@@ -240,6 +244,7 @@
                         } else {
                             bounds.extend(place.geometry.location);
                         }
+
                     });
                     map.fitBounds(bounds);
                 });
