@@ -42,11 +42,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <button type="reset" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="glyphicon glyphicon-info-sign" onclick="openHelp()"></span>
             </button>
 
             <button type="button" class="btn btn-sm btn-primary">
                 <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
+                <p id="helpText" class="speech">Hi!</p>
             </button>
             
             </span>
@@ -61,6 +62,10 @@
       <a href="#">Services</a>
       <a href="#">Clients</a>
       <a href="#">Contact</a>
+    </div>
+
+    <div id="myHelp" class="help">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeHelp()">&times;</a>
     </div>
 
     <!-- Use any element to open the sidenav 
@@ -266,6 +271,16 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0px";
         }
+
+		/* Open the sidenav */
+		function openHelp() {
+		    document.getElementById("helpText").style.opacity = "1";
+		}
+
+		/* Close/hide the sidenav */
+		function closeHelp() {
+		    document.getElementById("helpText").style.opacity = "0";
+		}
     </script>
 
     <script src="http://api.nestoria.co.uk"></script>
