@@ -74,6 +74,23 @@
   color: #ffffff;
 }
 
+#pac-input {
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  width: 400px;
+  padding: 0 11px 0 13px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
