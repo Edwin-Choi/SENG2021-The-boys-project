@@ -90,7 +90,8 @@
    
     <!-- search bar --> 
     <form id = "barForm" >
-        <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
+        <input id = "pac-input" class="controls" type="text" placeholder="Enter address">
+        <p id="helpSearch" class="speechSearch" >Enter locations here to find property nearby</p>
     </form>    
     <!-- 
     <div class="input-group col-lg-4" style="position: absolute;">
@@ -291,12 +292,14 @@
 		function openHelp() {
 			document.getElementById("myHelp").style.width = "100%";
 		    document.getElementById("helpText").style.opacity = "1";
+		    document.getElementById("helpSearch").style.opacity = "1";
 		}
 
 		/* Close/hide the sidenav */
 		function closeHelp() {
 			document.getElementById("myHelp").style.width = "0";
 		    document.getElementById("helpText").style.opacity = "0";
+		    document.getElementById("helpSearch").style.opacity = "0";
 		}
     </script>
 
