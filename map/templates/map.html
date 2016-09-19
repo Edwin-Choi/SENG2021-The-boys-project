@@ -189,8 +189,7 @@
                     if (places.length == 0) {
                         return;
                     }
-                    //var allRelatedJSON = httpGet("http://api.nestoria.co.uk/api?encoding=json&action=search_listings&country=uk&listing_type=buy&place_name=" + places);
-                   
+      
                    //clear out old markers
                     markers.forEach(function(marker) {
                         marker.setMap(null);
@@ -202,7 +201,7 @@
                     http.open("POST", "", true);
                     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     http.setRequestHeader("X-CSRFToken",csrftoken);
-                    var params = "pac-input="+ places; 
+                    var params = "pac-input="+ input.value; 
                     http.send(params);
                     http.onload = function() {
                         alert(http.responseText);
