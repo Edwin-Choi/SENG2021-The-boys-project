@@ -56,8 +56,19 @@
     </nav> 
 
     <div id="mySidenav" class="sidenav">
+      <a href="#">Keywords</a>
+          <form id="myform"> 
+              <input type="checkbox" name="house" id="g01-01"  onchange="doalert(this)"/><span>house</span>
+              <input type="checkbox" name="cottage" id="g01-02"  onchange="doalert(this)"/><span>cottage</span>
+              <input type="checkbox" name="studio" id="g01-03"  onchange="doalert(this)"/><span>studio</span>
+              <input type="checkbox" name="apartment" id="g01-04"  onchange="doalert(this)"/><span>apartment</span>
+              <input type="checkbox" name="balcony" id="g01-05"  onchange="doalert(this)"/><span>balcony</span>
+              <input type="checkbox" name="fireplace" id="g01-05"  onchange="doalert(this)"/><span>fireplace</span>
+              <input type="checkbox" name="gym" id="g01-06"  onchange="doalert(this)"/><span>gym</span>
+              <input type="checkbox" name="lift" id="g01-0"  onchange="doalert(this)"/><span>lift</span>
+          </form>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#">About</a>
+
       <a href="#">Services</a>
       <a href="#">Clients</a>
       <a href="#">Contact</a>
@@ -198,7 +209,7 @@
                     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     http.setRequestHeader("X-CSRFToken",csrftoken);
                     var params = "pac-input="+ input.value; 
-                    http.send(params);
+                    http.send(params)
                     http.onload = function() {
                         //JSON objects here
                         var allInfo = JSON.parse(http.responseText);
@@ -266,6 +277,22 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0px";
         }
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
     </script>
 
     <script src="http://api.nestoria.co.uk"></script>
