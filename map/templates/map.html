@@ -9,6 +9,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../static/favicon.ico">
 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
     <title>Find My House</title>
 
     <!-- Bootstrap core CSS -->
@@ -53,22 +55,23 @@
       </div>
     </nav> 
 
-
+    <!--
     <div class="input-group col-lg-4" style="position: absolute;">
         <input id = "pac-input" type="text" class="form-control" placeholder="Enter an address" />
         <span class="input-group-btn">
             <button class="btn btn-primary" type="button">Search</button>
         </span>
     </div>
+    -->
 
 
     <!--
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"> 
     </script>
     -->
-    <!--
-    <input id = "pac-input" class="controls" type="text" placeholder="Enter address" style="position: absolute;"> 
-    -->
+    
+    <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
+
 <!-- GOOGLE MAP HERE-->
 
         <div id="map-canvas" class="map-canvas"></div>
@@ -93,10 +96,9 @@
                     addMarker({{ poi.position.latitude }}, {{ poi.position.longitude }}, "{{ poi.name }}");
                 {% endfor %}
                 map.fitBounds(bounds);
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
 
 
+            //----------------------ALVA'S CODE (pls be gentle) --------------------------
             // create search box
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
@@ -106,7 +108,58 @@
             map.addListener('bounds_changed', function() {
                 searchBox.setBounds(map.getBounds());
             });
-            
+
+            var markers = [];
+            //listen for event fired when user selects a prediction
+            searchBox.addListener('places_changed', function(){
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                //clear out old markers
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+
+                // for each place, get icon, name and location
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contained no geometry");
+                        return;
+                    }
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+                    //creating a marker for each place
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        //only geocodes have a viewport 4Head
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+            //------------------------------------------------------------------------------
+
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);            
 
         </script>
 
