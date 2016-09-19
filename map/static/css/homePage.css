@@ -172,3 +172,174 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+/* The help menu */
+.help {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    opacity: 0.4;
+}
+
+/* The navigation menu links */
+.help a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.4s
+}
+
+/* When you mouse over the navigation links, change their color */
+.help a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.help .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .help {padding-top: 15px;}
+    .help a {font-size: 18px;}
+}
+
+.speech {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: -80px;
+  margin-top: 20px;
+  z-index: 5;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.speechSearch {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.center {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+}
+
+.speechMarker {
+  position: fixed;
+  width: 210px;
+  height: 50px;
+  top: 30%;
+  left: 25%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.speechZoom {
+  position: fixed;
+  width: 210px;
+  height: 40px;
+  top: 85%;
+  left: 63%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.speechStreet {
+  position: fixed;
+  width: 215px;
+  height: 45px;
+  top: 77%;
+  left: 62.7%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 6px;
+}
+

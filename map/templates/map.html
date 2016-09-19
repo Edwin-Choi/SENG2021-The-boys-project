@@ -42,11 +42,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <button type="reset" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="glyphicon glyphicon-info-sign" onclick="openHelp()"></span>
             </button>
 
             <button type="button" class="btn btn-sm btn-primary">
                 <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
+                <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>
             
             </span>
@@ -74,6 +75,9 @@
       <a href="#">Contact</a>
     </div>
 
+    <div id="myHelp" class="help">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeHelp()">&times;</a>
+    </div>
     <!-- Use any element to open the sidenav 
     <span onclick="openNav()">open</span> -->
     
@@ -82,10 +86,14 @@
     <div id="main">
     </div>
     -->
-   
+    <p id="helpMarker" class="speechMarker" >Click markers to view property information</p>
+    <p id="helpZoom" class="speechZoom" >Click these buttons to change the zoom level.</p>
+	<p id="helpStreet" class="speechStreet" >Drag the person onto the street to enter streetview.</p>   
+
     <!-- search bar --> 
     <form id = "barForm" >
-        <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
+        <input id = "pac-input" class="controls" type="text" placeholder="Enter address">
+        <p id="helpSearch" class="speechSearch" >Enter locations here to find property nearby</p>
     </form>    
     <!-- 
     <div class="input-group col-lg-4" style="position: absolute;">
@@ -364,6 +372,106 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0px";
         }
+
+		/* Open the sidenav */
+		function openHelp() {
+			document.getElementById("myHelp").style.width = "100%";
+		    document.getElementById("helpText").style.opacity = "1";
+		    document.getElementById("helpSearch").style.opacity = "1";
+		    document.getElementById("helpMarker").style.opacity = "1";
+		    document.getElementById("helpZoom").style.opacity = "1";
+		    document.getElementById("helpStreet").style.opacity = "1";
+		}
+
+		/* Close/hide the sidenav */
+		function closeHelp() {
+			document.getElementById("myHelp").style.width = "0";
+		    document.getElementById("helpText").style.opacity = "0";
+		    document.getElementById("helpSearch").style.opacity = "0";
+		    document.getElementById("helpMarker").style.opacity = "0";
+		    document.getElementById("helpZoom").style.opacity = "0";
+		    document.getElementById("helpStreet").style.opacity = "0";
+		}
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
+    </script>
+
+    <script>
+        function doalert(checkboxElem) {
+            if (checkboxElem.checked) {
+                
+            } else {
+
+            }
+        }
+        function getKeywords(){
+            document.getElementById()
+
+        }  
+
+        
     </script>
 
     <script>
