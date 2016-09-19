@@ -47,7 +47,7 @@
 
             <button type="button" class="btn btn-sm btn-primary">
                 <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
-                <p id="helpText" class="speech">Hi!</p>
+                <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>
             
             </span>
@@ -285,11 +285,13 @@
 
 		/* Open the sidenav */
 		function openHelp() {
+			document.getElementById("myHelp").style.width = "100%";
 		    document.getElementById("helpText").style.opacity = "1";
 		}
 
 		/* Close/hide the sidenav */
 		function closeHelp() {
+			document.getElementById("myHelp").style.width = "0";
 		    document.getElementById("helpText").style.opacity = "0";
 		}
     </script>
