@@ -4,5 +4,11 @@ from .models import Position
 
 # Create your views here.
 def index(request):
-    position = Position.objects.all();
+    if request.method == 'POST':
+        return HttpResponse("something interesting?")
+    else:
+        position = Position.objects.all();
+        name = request.GET.get('pac-input');
+        print(name);
     return render(request, 'map.html', {'pois': position})
+
