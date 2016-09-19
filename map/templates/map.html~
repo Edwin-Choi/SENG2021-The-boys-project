@@ -42,11 +42,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <button type="reset" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-info-sign"></span>
+                <span class="glyphicon glyphicon-info-sign" onclick="openHelp()"></span>
             </button>
 
             <button type="button" class="btn btn-sm btn-primary">
                 <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
+                <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>
             
             </span>
@@ -69,11 +70,15 @@
           </form>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
+      <a href="#">PriceInterval</a>
+         <input id = "min-price" class="controls" type="text" placeholder="min">
+         <input id = "max-price" class="controls" type="text" placeholder="max">
+      <a href="#">More Coming...</a>
     </div>
 
+    <div id="myHelp" class="help">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeHelp()">&times;</a>
+    </div>
     <!-- Use any element to open the sidenav 
     <span onclick="openNav()">open</span> -->
     
@@ -82,10 +87,14 @@
     <div id="main">
     </div>
     -->
-   
+    <p id="helpMarker" class="speechMarker" >Click markers to view property information</p>
+    <p id="helpZoom" class="speechZoom" >Click these buttons to change the zoom level.</p>
+	<p id="helpStreet" class="speechStreet" >Drag the person onto the street to enter streetview.</p>   
+
     <!-- search bar --> 
     <form id = "barForm" >
-        <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
+        <input id = "pac-input" class="controls" type="text" placeholder="Enter address">
+        <p id="helpSearch" class="speechSearch" >Enter locations here to find property nearby</p>
     </form>    
     <!-- 
     <div class="input-group col-lg-4" style="position: absolute;">
@@ -114,6 +123,7 @@
                    
                     var position = new google.maps.LatLng(lat, lng);
                     if(!shouldAddMarker(position)){
+                        console.log("shoud not log this!")
                         return;
                     }
                     var marker = new google.maps.Marker({
@@ -174,25 +184,27 @@
                     return cookieValue;
                 }
 
-                function updateMarkers(name,fit){
+
+                function sendHTTPPost(control,fit){
                     var csrftoken = getCookie('csrftoken');
                     var http = new XMLHttpRequest();
                     http.open("POST", "", true);
                     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     http.setRequestHeader("X-CSRFToken",csrftoken);
-                    var params = "pac-input="+ name; 
+                    var params = control
                     http.send(params)
                     http.onload = function() {
                         //JSON objects here
                         var allInfo = JSON.parse(http.responseText);
-                        if(allInfo.response.application_response_code == 101){
+                        console.log(http.responseText);
+                        if(allInfo.response.application_response_code != 200){
                             if(allInfo.page < allInfo.total_pages){
                                 var nextPage = parseInt(allInfo.page) + 1;
                                 http.send(params + "&page=" + nextPage);
                             }
                             var responseArray = allInfo.response.listings;
                             for(var i = 0 ; i < responseArray.length ; i++){
-                                //console.log(i);
+                                console.log(i);
                                 addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
                             }
                           
@@ -203,38 +215,17 @@
                         
                     }
                    
+
+                }
+
+
+                function updateMarkers(name,fit){
+                   sendHTTPPost("pac-input=" + name, fit);
                 }
 
                 function updateMarkersByBound(bound){
-                    var csrftoken = getCookie('csrftoken');
-                    var http = new XMLHttpRequest();
-                    http.open("POST", "", true);
-                    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                    http.setRequestHeader("X-CSRFToken",csrftoken);
-                    var params = "&south_west=" + bound.getSouthWest().lat() + "," + bound.getSouthWest().lng() 
-                                 + "&north_east=" + bound.getNorthEast().lat() + "," + bound.getNorthEast().lng(); 
-                    http.send(params)
-                    
-                    http.onload = function() {
-                        //JSON objects here
-                        //alert(http.responseText);
-                        var allInfo = JSON.parse(http.responseText);
-
-                        if(allInfo.response.application_response_code != 200){
-                            if(allInfo.page < allInfo.total_pages){
-                                var nextPage = parseInt(allInfo.page) + 1;
-                                http.send(params + "&page=" + nextPage);
-                            }
-                            var responseArray = allInfo.response.listings;
-                            for(var i = 0 ; i < responseArray.length ; i++){
-                                //console.log(i);
-                                addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
-                            }
-                          
-                        }
-                        //map.fitBounds(bounds);
-                    }
-                   
+                    sendHTTPPost("&south_west=" + bound.getSouthWest().lat() + "," + bound.getSouthWest().lng() 
+                                 + "&north_east=" + bound.getNorthEast().lat() + "," + bound.getNorthEast().lng(),0);
                 }
 
                 function clearMarkers(){
@@ -364,19 +355,42 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0px";
         }
+
+		/* Open the sidenav */
+		function openHelp() {
+			document.getElementById("myHelp").style.width = "100%";
+		    document.getElementById("helpText").style.opacity = "1";
+		    document.getElementById("helpSearch").style.opacity = "1";
+		    document.getElementById("helpMarker").style.opacity = "1";
+		    document.getElementById("helpZoom").style.opacity = "1";
+		    document.getElementById("helpStreet").style.opacity = "1";
+		}
+
+		/* Close/hide the sidenav */
+		function closeHelp() {
+			document.getElementById("myHelp").style.width = "0";
+		    document.getElementById("helpText").style.opacity = "0";
+		    document.getElementById("helpSearch").style.opacity = "0";
+		    document.getElementById("helpMarker").style.opacity = "0";
+		    document.getElementById("helpZoom").style.opacity = "0";
+		    document.getElementById("helpStreet").style.opacity = "0";
+		}
     </script>
 
     <script>
         function doalert(checkboxElem) {
-            if (checkboxElem.checked) {
-                
-            } else {
-
-            }
+            clearMarkers();
+            updateMarkersByBound(currentBound);
         }
         function getKeywords(){
-            
-
+           var allBox = document.getElementsByClassName("cb");
+           var str = "";
+           for(var i = 0 ; i < allBox.length ; i ++){
+                 if (allBox[i].checked) {
+                    str = str + allBox[i].name + ",";
+                }
+           }
+           return str.substring(0,str.length - 1 );
         }  
 
         
