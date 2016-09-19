@@ -242,7 +242,7 @@
 
 .speechSearch {
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: 60px;
   background-color: #fff;
   border: 2px solid #666;
@@ -252,8 +252,8 @@
   -webkit-box-shadow: 2px 2px 4px #888;
   -moz-box-shadow: 2px 2px 4px #888;
   box-shadow: 2px 2px 4px #888;
-  margin-right: 80px;
-  margin-top: 20px;
+  margin-left: 200px;
+  margin-top: 45px;
   z-index: 1;
   opacity: 0;
   color: #818181;
@@ -262,6 +262,84 @@
   padding-top: 10px;
 }
 
+.center {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+}
 
+.speechMarker {
+  position: fixed;
+  width: 210px;
+  height: 50px;
+  top: 30%;
+  left: 25%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 10px;
+}
 
+.speechZoom {
+  position: fixed;
+  width: 210px;
+  height: 40px;
+  top: 85%;
+  left: 63%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.speechStreet {
+  position: fixed;
+  width: 215px;
+  height: 45px;
+  top: 77%;
+  left: 62.7%;
+  background-color: #fff;
+  border: 2px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  margin-left: 200px;
+  margin-top: 45px;
+  z-index: 1;
+  opacity: 0;
+  color: #818181;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 6px;
+}
 

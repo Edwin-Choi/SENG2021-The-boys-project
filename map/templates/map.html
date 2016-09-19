@@ -78,7 +78,6 @@
     <div id="myHelp" class="help">
       <a href="javascript:void(0)" class="closebtn" onclick="closeHelp()">&times;</a>
     </div>
-
     <!-- Use any element to open the sidenav 
     <span onclick="openNav()">open</span> -->
     
@@ -87,7 +86,10 @@
     <div id="main">
     </div>
     -->
-   
+    <p id="helpMarker" class="speechMarker" >Click markers to view property information</p>
+    <p id="helpZoom" class="speechZoom" >Click these buttons to change the zoom level.</p>
+	<p id="helpStreet" class="speechStreet" >Drag the person onto the street to enter streetview.</p>   
+
     <!-- search bar --> 
     <form id = "barForm" >
         <input id = "pac-input" class="controls" type="text" placeholder="Enter address">
@@ -293,6 +295,9 @@
 			document.getElementById("myHelp").style.width = "100%";
 		    document.getElementById("helpText").style.opacity = "1";
 		    document.getElementById("helpSearch").style.opacity = "1";
+		    document.getElementById("helpMarker").style.opacity = "1";
+		    document.getElementById("helpZoom").style.opacity = "1";
+		    document.getElementById("helpStreet").style.opacity = "1";
 		}
 
 		/* Close/hide the sidenav */
@@ -300,6 +305,9 @@
 			document.getElementById("myHelp").style.width = "0";
 		    document.getElementById("helpText").style.opacity = "0";
 		    document.getElementById("helpSearch").style.opacity = "0";
+		    document.getElementById("helpMarker").style.opacity = "0";
+		    document.getElementById("helpZoom").style.opacity = "0";
+		    document.getElementById("helpStreet").style.opacity = "0";
 		}
     </script>
 
