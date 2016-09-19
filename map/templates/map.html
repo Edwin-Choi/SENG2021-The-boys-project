@@ -208,13 +208,13 @@
                         marker.setMap(null);
                     });
                     markers = [];
-
+                    
                     var csrftoken = getCookie('csrftoken');
                     var http = new XMLHttpRequest();
                     http.open("POST", "", true);
                     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     http.setRequestHeader("X-CSRFToken",csrftoken);
-                    var params = "pac-input="+ input.value; 
+                    var params = "pac-input="+ places[0].name; 
                     http.send(params)
                     http.onload = function() {
                         //JSON objects here
