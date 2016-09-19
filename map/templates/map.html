@@ -33,8 +33,6 @@
 
   <body>
 
-    <!-- search bar --> 
-
    <nav class="navbar-default navbar-top">
       <div class="container">
         <div class="navbar-header">
@@ -49,13 +47,37 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-info-sign"></span></button>
-            <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+
+            <button type="reset" class="btn btn-sm btn-primary">
+                <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
+            </button>
+            
+            </span>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav> 
 
-    <!--
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <!-- Use any element to open the sidenav 
+    <span onclick="openNav()">open</span> -->
+    
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page 
+    <div id="main">
+    </div>
+    -->
+
+    <!-- search bar --> 
+    <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
+    <!-- 
     <div class="input-group col-lg-4" style="position: absolute;">
         <input id = "pac-input" type="text" class="form-control" placeholder="Enter an address" />
         <span class="input-group-btn">
@@ -63,14 +85,6 @@
         </span>
     </div>
     -->
-
-
-    <!--
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"> 
-    </script>
-    -->
-    
-    <input id = "pac-input" class="controls" type="text" placeholder="Enter address"> 
 
 <!-- GOOGLE MAP HERE-->
 
@@ -163,6 +177,19 @@
 
         </script>
 
+    <!-- sidenav script 
+    ==================================================-->
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
