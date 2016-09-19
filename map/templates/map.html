@@ -165,6 +165,7 @@
 
 
                 //----------------------ALVA'S CODE (pls be gentle) --------------------------
+
                
                 // create search box
                 var input = document.getElementById('pac-input');
@@ -201,6 +202,7 @@
                     http.onload = function() {
                         //JSON objects here
                         var allInfo = JSON.parse(http.responseText);
+
                         if(allInfo.response.application_response_code == 101){
                             var responseArray = allInfo.response.listings;
                             for(var i = 0 ; i < responseArray.length ; i++){
