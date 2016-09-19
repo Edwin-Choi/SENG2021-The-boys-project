@@ -95,32 +95,9 @@
                 var map = new google.maps.Map(document.getElementById('map-canvas'));
                 var bounds = new google.maps.LatLngBounds();
 
-                //Info windows
-                var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-                '<div id="bodyContent">'+
-                '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-                'sandstone rock formation in the southern part of the '+
-                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-                'south west of the nearest large town, Alice Springs; 450&#160;km '+
-                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-                'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-                'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-                'Aboriginal people of the area. It has many springs, waterholes, '+
-                'rock caves and ancient paintings. Uluru is listed as a World '+
-                'Heritage Site.</p>'+
-                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-                'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-                '(last visited June 22, 2009).</p>'+
-                '</div>'+
-                '</div>';
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
 
-                function addMarker(lat, lng, title) {
+                function addMarker(lat, lng, title, info) {
+                   
                     var position = new google.maps.LatLng(lat, lng);
                     var marker = new google.maps.Marker({
                         position: position,
@@ -128,7 +105,29 @@
                         title: title
                     });
                     bounds.extend(position);
-
+                    if(info != null){
+                        //Info windows
+                        var contentString = '<div id="content">'+
+                        '<div id="siteNotice">'+
+                        '</div>'+
+                        '<h1 id="firstHeading" class="firstHeading">'+ info.title +'</h1>'+
+                        '<img src='+ info.img_url +' style="width:304px;height:228px;">'+
+                        '<div id="bodyContent">'+
+                        '<p>'+ info.summary + ' </p>'+
+                        '<p> Price Starting: '+ info.price + " "+ info.price_currency + ' </p>'+
+                        '<p> Property Type: '+ info.property_type + ' </p>'+
+                        '<p> Bedroom number: '+ info.bedroom_number + ' </p>'+
+                        '<p> bathroom number: '+ info.bathroom_number + ' </p>'+
+                        '<p><a href= '+ info.lister_url +'>'+
+                        'Click for details</a> '+
+                        '</p>'+
+                        '</div>'+
+                        '</div>';
+                        var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                        });
+                    }
+                     
                     marker.addListener('click', function() {
                         infowindow.open(map, marker);
                     });
@@ -166,10 +165,6 @@
 
 
                 //----------------------ALVA'S CODE (pls be gentle) --------------------------
-
-                addMarker(-25.363, 131.044, "Uluru");
-
-
                
                 // create search box
                 var input = document.getElementById('pac-input');
@@ -210,7 +205,7 @@
                             var responseArray = allInfo.response.listings;
                             for(var i = 0 ; i < responseArray.length ; i++){
                                 console.log(i);
-                                addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].titles);
+                                addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
                             }
                         }
                     }
