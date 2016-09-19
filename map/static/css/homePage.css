@@ -22,6 +22,12 @@
     left: 30px;
 }
 
+
+.navbar-checkBox{
+    position: relative;
+    left: 3px;
+}
+
 .navbar-default {
   background-color: #266e9d;
   border-color: #5d71ab;
