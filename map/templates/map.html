@@ -218,13 +218,17 @@
                     http.onload = function() {
                         //JSON objects here
                         var allInfo = JSON.parse(http.responseText);
-
                         if(allInfo.response.application_response_code == 101){
+                            if(allInfo.page < allInfo.total_pages){
+                                var nextPage = parseInt(allInfo.page) + 1;
+                               // http.send(params + "&page=" + nextPage);
+                            }
                             var responseArray = allInfo.response.listings;
                             for(var i = 0 ; i < responseArray.length ; i++){
                                 console.log(i);
                                 addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
                             }
+                          
                         }
                     }
 
