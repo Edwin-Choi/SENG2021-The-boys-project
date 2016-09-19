@@ -52,7 +52,7 @@
     </nav>
 
     <!-- search bar -->
-    <div class="input-group col-lg-6">
+    <div class="input-group col-lg-6" style="position: absolute;">
         <input id = "pac-input" type="text" class="form-control" />
         <span class="input-group-btn">
             <button class="btn btn-primary" type="button">Search</button>
@@ -102,6 +102,9 @@
             var input = document.getElementById('pac-input');
             map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
             var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+            var myControl = document.getElementById('pac-input');
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(myControl);
         </script>
 
 
