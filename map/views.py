@@ -3,12 +3,14 @@ from django.http import HttpResponse
 from .models import Position
 import urllib.request
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 class AppURLopener(urllib.request.FancyURLopener):
     version = "Mozilla/5.0"
 
 # Create your views here.
+@csrf_exempt 
 def index(request):
     if request.method == 'POST':
         name = request.POST.get('pac-input')
