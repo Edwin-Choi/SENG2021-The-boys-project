@@ -10,8 +10,12 @@ class AppURLopener(urllib.request.FancyURLopener):
     version = "Mozilla/5.0"
 
 # Create your views here.
-@csrf_exempt 
+
 def index(request):
+    return render(request,'index.html')
+
+@csrf_exempt 
+def map(request):
     if request.method == 'POST':
         name = request.POST.get('pac-input')
         keyword = request.POST.get('keyword')
