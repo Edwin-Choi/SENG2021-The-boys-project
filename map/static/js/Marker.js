@@ -89,6 +89,8 @@ class Marker{
 			if(this.duration == null){
 				returnValue = returnValue && false;
 			}else{
+				console.log(duration);
+				console.log(this.duration.value + " " + DM_time*60)
 				returnValue = returnValue && (this.duration.value <= DM_time*60);
 			}
 		}

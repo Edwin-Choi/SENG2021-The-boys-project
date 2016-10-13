@@ -189,7 +189,7 @@
                                     copy[j] = markers[i*24 + j].getPosition();
                                 }
                             }catch(err){
-                                
+                                return;
                             }
                         }
                          var service = new google.maps.DistanceMatrixService();
@@ -203,6 +203,8 @@
                             avoidTolls: false,
                           }, callback);
                     }
+
+
                    
 
                     function callback(response, status) {
@@ -215,14 +217,20 @@
                         for (var j = 0; j < results.length; j++) {
                             var to = destinations[j];
                             markers.forEach(function(marker){
+                                console.log("M:" + marker.getPosition())
+                                console.log("Ac:" + to);
+                                // I CANNOT ACCEPT THIS, WHY GOOGLE SENDS ME LOCATION BACK . NOPE!!!
                                 if(marker.getPosition() === to){
                                     marker.setDuration(duration);
+                                    console.log("set one marker! OMG")
                                 }
                             }); 
                         }
                     }
+
                 }
             }
+
 
 
 
