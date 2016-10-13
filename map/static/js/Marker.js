@@ -14,10 +14,37 @@ class Marker{
 	constructor(googleMarker, assetInfo){
 		this.googleMarker = googleMarker;
 		this,assetInfo = assetInfo;
+		console.log(assetInfo === null)
+		this.update();
 	}
 	
 
 	update(){
+		var words = getExtraSearchWords();
+		if(words){
+			console.log("words act," + this.assetInfo === null)
+	
+			var objWords = this.assetInfo.listings.keywords;
+			for(var j = 0 ; j < words.length ; j ++){
+				var pass = false;
+				for(var i = 0 ; i < objWords.length ; i ++){
+					if(objWords[i] === words[j]){
+						pass = true;
+						break;
+					}
+				}
+				if(pass){
+					this.googleMarker.setMap(map);
+					return;
+				}
+				this.googleMarker.setMap(null);
+			}
+			
+		}else{
+			if(this.googleMarker.getMap() != map){
+				this.googleMarker.setMap(map);
+			}
+		}
 		
 	}
 

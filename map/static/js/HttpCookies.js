@@ -42,13 +42,7 @@ function sendHTTPPost(control,fit){
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     http.setRequestHeader("X-CSRFToken",csrftoken);
     getExtraSearchWords();
-    var params = control + getExtraSearchWords();
-    var doModify = getExtraSearchWords() != lastWords;
-    lastWords = getExtraSearchWords();
-    if(doModify){
-        clearMarkers();
-    }
-    http.send(params)
+    http.send(control);
     http.onload = function() {
         //JSON objects here
         var allInfo = JSON.parse(http.responseText);
@@ -63,12 +57,12 @@ function sendHTTPPost(control,fit){
                 //console.log(i);
                 addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
             }
-          
+            
         }
         if(fit == 1){
             map.fitBounds(bounds);
         }
-        
+        onUpdate(); 
     }
    
 
