@@ -142,13 +142,13 @@
 
             function getKeywords(){
                var allBox = document.getElementsByClassName("cb");
-               var str = "";
+               var str = [];
                for(var i = 0 ; i < allBox.length ; i ++){
                      if (allBox[i].checked) {
-                        str = str + allBox[i].name + ",";
+                        str.push(allBox[i].name) ;
                     }
                }
-               return str.substring(0,str.length - 1 );
+               return str;
             }  
 
 

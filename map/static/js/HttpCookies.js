@@ -41,7 +41,6 @@ function sendHTTPPost(control,fit){
     http.open("POST", "", true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     http.setRequestHeader("X-CSRFToken",csrftoken);
-    getExtraSearchWords();
     http.send(control);
     http.onload = function() {
         //JSON objects here

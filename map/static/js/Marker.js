@@ -13,18 +13,33 @@
 class Marker{
 	constructor(googleMarker, assetInfo){
 		this.googleMarker = googleMarker;
-		this,assetInfo = assetInfo;
-		console.log(assetInfo === null)
-		this.update();
+		this.assetInfo = assetInfo;
 	}
+
+
 	
 
 	update(){
-		var words = getExtraSearchWords();
-		if(words){
-			console.log("words act," + this.assetInfo === null)
-	
-			var objWords = this.assetInfo.listings.keywords;
+		if(this.shouldShow()){	
+			if(this.googleMarker.getMap() != map){
+				this.googleMarker.setMap(map);
+			}
+		}else{
+			if(this.googleMarker.getMap() != null){
+				this.googleMarker.setMap(null);
+			}
+		}
+		
+	}
+
+	getPosition(){
+		return this.googleMarker.getPosition();
+	}
+
+	shouldShow(){
+		var words = getKeywords();
+		if(words.length > 0){
+			var objWords = this.assetInfo.keywords;
 			for(var j = 0 ; j < words.length ; j ++){
 				var pass = false;
 				for(var i = 0 ; i < objWords.length ; i ++){
@@ -34,22 +49,14 @@ class Marker{
 					}
 				}
 				if(pass){
-					this.googleMarker.setMap(map);
-					return;
+					console.log("k");
+					return true;
 				}
-				this.googleMarker.setMap(null);
 			}
-			
+			return false;
 		}else{
-			if(this.googleMarker.getMap() != map){
-				this.googleMarker.setMap(map);
-			}
+			return true;
 		}
-		
-	}
-
-	getPosition(){
-		return this.googleMarker.getPosition();
 	}
 
 }
