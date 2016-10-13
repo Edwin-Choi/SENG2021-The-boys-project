@@ -74,9 +74,20 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
       <a href="#">PriceInterval</a>
-         <input id = "min-price" class="controls" type="text" placeholder="min">
-         <input id = "max-price" class="controls" type="text" placeholder="max">
-      <a href="#">More Coming...</a>
+         <input id = "min-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="min">
+         <input id = "max-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="max">
+      <a href="#">Distance Matrix...</a>
+         <input id = "DM_name" class="controls" type="text" placeholder="Destination_Name">
+         <input id = "DM_time" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="minutes">
+         <select id = "DM_travel">
+          <option value="DRIVING">Drive</option>
+          <option value="TRANSIT">Transit</option>
+          <option value="WALKING">Walking</option>
+        </select>
+
+         <button class="btn btn-primary" type="button" onclick="dmSearch()" >Calculate</button>
+
+
     </div>
 
     <div id="myHelp" class="help">
@@ -121,6 +132,19 @@
             var lastBounds;
             var map;
             var bounds;
+            var DM_name;
+            var DM_time;
+            var DM_travel;
+
+            function dmSearch(){
+                DM_name = document.getElementById("DM_name").value;
+                DM_time = document.getElementById("DM_time").value;
+
+
+
+
+            }
+
 
             function getExtraSearchWords(){
                 var returnValue = "";

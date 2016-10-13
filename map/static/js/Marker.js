@@ -32,6 +32,10 @@ class Marker{
 		
 	}
 
+	setDesto(desto){
+		this.desto = desto;
+	}
+
 	getPosition(){
 		return this.googleMarker.getPosition();
 	}
@@ -41,16 +45,13 @@ class Marker{
 		var returnValue = true;
 		var minPrice = document.getElementById("min-price").value;
         var maxPrice = document.getElementById("max-price").value;
-		console.log("required " + words);
-		console.log("current " + this.assetInfo.keywords);
-		console.log("\n");
 		//keywords
 		if(words.length > 0){
 			var objWords = this.assetInfo.keywords;
 			var pass = false;
 			for(var j = 0 ; j < words.length ; j ++){
 				for(var i = 0 ; i < objWords.length ; i ++){
-					if(objWords[i] === words[j]){
+					if(objWords[i].toLowercase() === words[j].toLowercase()){
 						pass = true;
 						break;
 					}
