@@ -44,24 +44,29 @@ function sendHTTPPost(control,fit){
     http.send(control);
     http.onload = function() {
         //JSON objects here
-        var allInfo = JSON.parse(http.responseText);
-        //console.log(http.responseText);
-        if(allInfo.response.application_response_code != 200){
-            if(allInfo.page < allInfo.total_pages){
-                var nextPage = parseInt(allInfo.page) + 1;
-                http.send(params + "&page=" + nextPage);
+        try{
+            var allInfo = JSON.parse(http.responseText);
+            //console.log(http.responseText);
+            if(allInfo.response.application_response_code != 200){
+                if(allInfo.page < allInfo.total_pages){
+                    var nextPage = parseInt(allInfo.page) + 1;
+                    http.send(params + "&page=" + nextPage);
+                }
+                var responseArray = allInfo.response.listings;
+                for(var i = 0 ; i < responseArray.length ; i++){
+                    //console.log(i);
+                    addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
+
+                }
+                
             }
-            var responseArray = allInfo.response.listings;
-            for(var i = 0 ; i < responseArray.length ; i++){
-                //console.log(i);
-                addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
+            if(fit == 1){
+                map.fitBounds(bounds);
             }
-            
-        }
-        if(fit == 1){
-            map.fitBounds(bounds);
-        }
-        onUpdate(); 
+            onUpdate(); 
+      }catch(eee){
+
+     }
     }
    
 

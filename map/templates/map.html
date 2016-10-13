@@ -135,15 +135,96 @@
             var DM_name;
             var DM_time;
             var DM_travel;
+            var pressed = 0;
+            var DM_searchingBox = new google.maps.places.SearchBox(document.getElementById('DM_name'));                
+
+            function getAllMarkersPosition(){
+                var copy = [];
+                markers.forEach(function(m){
+                    copy.push(m.getPosition());
+                });
+                return copy;
+            }
+
+            function checkDM(){
+                return DM_name && DM_time && DM_travel && pressed == 1 ;
+            }
 
             function dmSearch(){
                 DM_name = document.getElementById("DM_name").value;
                 DM_time = document.getElementById("DM_time").value;
+                DM_travel = document.getElementById("DM_travel").value;
+                pressed = 1;
+                //console.log(DM_name + " " + DM_time +  " " + DM_travel);
+               
+        
+
+                if(DM_name && DM_time && DM_travel){
+                    var places = DM_searchingBox.getPlaces();
+                    if (places.length == 0 || !places[0].geometry) {
+                        return;
+                    }
+                    var bounds = new google.maps.LatLngBounds();
+                    if (places[0].geometry.viewport) {
+                            //only geocodes have a viewport 4Head
+                        bounds.union(places[0].geometry.viewport);
+                    } else {
+                        bounds.extend(places[0].geometry.location);
+                    }
+                    map.fitBounds(bounds);
+
+                    filteMarkers(); //remove all out of bound markers
+
+                    markers.forEach(function(marker){
+                        marker.setDesto(DM_name);
+                    });
+                    var count = markers.length / 24;
+                    for(var i = 0 ; i < count+1 ; i ++){
+                        var copy = [];
+                        for(var j = 0 ; j < 24 ; j ++){
+                            try{
+                                if(i > count){
+                                    copy[j] = markers[count*24 + j].getPosition();
+                                }else{
+                                    copy[j] = markers[i*24 + j].getPosition();
+                                }
+                            }catch(err){
+                                
+                            }
+                        }
+                         var service = new google.maps.DistanceMatrixService();
+                        
+                        service.getDistanceMatrix(
+                          {
+                            origins: [DM_name],
+                            destinations: copy,
+                            travelMode: DM_travel,
+                            avoidHighways: false,
+                            avoidTolls: false,
+                          }, callback);
+                    }
+                   
+
+                    function callback(response, status) {
+                        console.log(response)
+                        console.log(status)
+                        var destinations = response.destinationAddresses;
 
 
-
-
+                        var results = response.rows[0].elements;
+                        for (var j = 0; j < results.length; j++) {
+                            var to = destinations[j];
+                            markers.forEach(function(marker){
+                                if(marker.getPosition() === to){
+                                    marker.setDuration(duration);
+                                }
+                            }); 
+                        }
+                    }
+                }
             }
+
+
 
 
             function getExtraSearchWords(){
@@ -208,6 +289,7 @@
                 //bias results to current map viewport
                 map.addListener('bounds_changed', function() {
                     searchBox.setBounds(map.getBounds());
+                    DM_searchingBox.setBounds(map.getBounds());
                 });
 
                 google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -221,7 +303,6 @@
                 //listen for event fired when user selects a prediction
                 searchBox.addListener('places_changed', function(){
                     var places = searchBox.getPlaces();
-
                     if (places.length == 0) {
                         return;
                     }
@@ -245,13 +326,6 @@
                             scaledSize: new google.maps.Size(25, 25)
                         };
 
-                        //creating a marker for each place
-                        markers.push(new google.maps.Marker({
-                            map: map,
-                            icon: icon,
-                            title: place.name,
-                            position: place.geometry.location
-                        }));
 
                         if (place.geometry.viewport) {
                             //only geocodes have a viewport 4Head

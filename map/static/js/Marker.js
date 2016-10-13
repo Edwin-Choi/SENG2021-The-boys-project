@@ -36,6 +36,20 @@ class Marker{
 		this.desto = desto;
 	}
 
+	setDuration(duration){
+		this.duration = duration;
+	}
+
+	getDuration(){
+		return this.duration;
+	}
+
+	getDesto(){
+		return this.desto;
+	}
+
+
+
 	getPosition(){
 		return this.googleMarker.getPosition();
 	}
@@ -69,6 +83,14 @@ class Marker{
 
 		if(maxPrice){
 			returnValue = returnValue && (maxPrice > this.assetInfo.price);
+		}
+
+		if(checkDM()){
+			if(this.duration == null){
+				returnValue = returnValue && false;
+			}else{
+				returnValue = returnValue && (this.duration.value <= DM_time*60);
+			}
 		}
 
 		return returnValue;
@@ -163,14 +185,16 @@ function shouldAddMarker(obj){
                
 }
 
+function filteMarkers(){
+	markers.filter(function(marker){
+		return map.getBounds().contains(marker.getPosition());
+	})
+}
+
 
 /*
    remove all markers
 */
 function clearMarkers(){
-    //clear out old markers
-    markers.forEach(function(marker) {
-        marker.setMap(null);
-    });
-    markers = [];
+	//TODO:
 }
