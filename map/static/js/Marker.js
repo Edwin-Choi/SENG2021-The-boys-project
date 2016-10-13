@@ -38,10 +38,15 @@ class Marker{
 
 	shouldShow(){
 		var words = getKeywords();
+		var returnValue = true;
+		var minPrice = document.getElementById("min-price").value;
+        var maxPrice = document.getElementById("max-price").value;
+		
+		//keywords
 		if(words.length > 0){
 			var objWords = this.assetInfo.keywords;
+			var pass = false;
 			for(var j = 0 ; j < words.length ; j ++){
-				var pass = false;
 				for(var i = 0 ; i < objWords.length ; i ++){
 					if(objWords[i] === words[j]){
 						pass = true;
@@ -49,14 +54,22 @@ class Marker{
 					}
 				}
 				if(pass){
-					console.log("k");
-					return true;
+					break;
 				}
 			}
-			return false;
-		}else{
-			return true;
+			returnValue = pass && returnValue;
 		}
+
+		if(minPrice){
+			returnValue = returnValue && (minPrice < this.assetInfo.price);
+		}
+
+		if(maxPrice){
+			returnValue = returnValue && (maxPrice > this.assetInfo.price);
+		}
+
+		console.log("show? " + returnValue)
+		return returnValue;
 	}
 
 }
