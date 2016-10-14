@@ -70,27 +70,27 @@
               <input type="checkbox" class="cb" name="Cottage" id="g01-02" onchange="chekcboxEvent()"/><span>cottage</span>
 	        </label>
           	<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Studio" id="g01-03" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">studio</span>
+              <input type="checkbox" class="cb" name="Studio" id="g01-03" onchange="chekcboxEvent()"/><span>studio</span>
 	        </label>
 			<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Apartment" id="g01-04" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">apartment</span>
+              <input type="checkbox" class="cb" name="Apartment" id="g01-04" onchange="chekcboxEvent()"/><span>apartment</span>
 			</label>
 			<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Balcony" id="g01-05" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">balcony</span>
+              <input type="checkbox" class="cb" name="Balcony" id="g01-05" onchange="chekcboxEvent()"/><span>balcony</span>
 			</label>
           	<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Fireplace" id="g01-05" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">fireplace</span>
+              <input type="checkbox" class="cb" name="Fireplace" id="g01-05" onchange="chekcboxEvent()"/><span>fireplace</span>
 			</label>
           	<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Gym" id="g01-06" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">gym</span>
+              <input type="checkbox" class="cb" name="Gym" id="g01-06" onchange="chekcboxEvent()"/><span>gym</span>
 			</label>
           	<label class="checkbox-inline" style="color:rgb(204, 255, 255)">
-              <input type="checkbox" class="cb" name="Lift" id="g01-0" onchange="chekcboxEvent()"/><span style="color:rgb(204, 255, 255)">lift</span>
+              <input type="checkbox" class="cb" name="Lift" id="g01-0" onchange="chekcboxEvent()"/><span>lift</span>
 			</label>  
           </form>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-      <a href="#">PriceInterval</a>
+      <a href="#">Price Interval</a>
          <input id = "min-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="min">
          <input id = "max-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="max">
       <a href="#">Distance Matrix...</a>
@@ -103,7 +103,15 @@
         </select>
 
          <button class="btn btn-primary" type="button" onclick="dmSearch()" >Calculate</button>
-
+      <a href="#">Bedrooms</a>
+         <select id = "NUM_bedrooms">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="5+">5+</option>
+        </select>
 
     </div>
 
