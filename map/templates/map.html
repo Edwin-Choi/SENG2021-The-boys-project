@@ -103,6 +103,8 @@
         </select>
 
          <button class="btn btn-primary" type="button" onclick="dmSearch()" >Calculate</button>
+         <button class="btn btn-primary" type="button" onclick="dmSearchCancel()" >Calculate</button>
+
       <a href="#">Bedrooms</a>
          <select id = "NUM_bedrooms">
           <option value="1">1</option>
@@ -175,6 +177,11 @@
                 return DM_name && DM_time && DM_travel && pressed == 1 ;
             }
 
+            function dmSearchCancel(){
+                document.getElementById("DM_name").value = null;
+                pressed = 0;
+            }
+
             function dmSearch(){
                 DM_name = document.getElementById("DM_name").value;
                 DM_time = document.getElementById("DM_time").value;
@@ -198,28 +205,36 @@
                     }
                     map.fitBounds(bounds);
 
-                    filteMarkers(); //remove all out of bound markers
+                    filteMarkers(bounds); //remove all out of bound markers
 
                     markers.forEach(function(marker){
                         marker.setDesto(DM_name);
                     });
-                    var count = markers.length / 24;
-                    for(var i = 0 ; i < count+1 ; i ++){
-                        var copy = [];
+                    var count = parseInt(markers.length / 24);
+                    var numberOfSent = 0;
+                    var copy = [];
+                    sendNext();
+                     
+                 
+                    
+
+                    function sendNext(){
+                        console.log("send Next " + numberOfSent + "/" + count)
+                        numberOfSent = numberOfSent+1;
                         for(var j = 0 ; j < 24 ; j ++){
                             try{
                                 if(i > count){
-                                    copy[j] = markers[count*24 + j].getPosition();
+                                    copy[j] = markers[count * 24 + j].getPosition();
                                 }else{
-                                    copy[j] = markers[i*24 + j].getPosition();
+                                    copy[j] = markers[numberOfSent * 24 + j].getPosition();
                                 }
                             }catch(err){
                                 return;
                             }
                         }
-                         var service = new google.maps.DistanceMatrixService();
-                        
-                        service.getDistanceMatrix(
+                      var service = new google.maps.DistanceMatrixService();
+
+                      service.getDistanceMatrix(
                           {
                             origins: [DM_name],
                             destinations: copy,
@@ -228,28 +243,22 @@
                             avoidTolls: false,
                           }, callback);
                     }
-
-
                    
 
                     function callback(response, status) {
-                        console.log(response)
-                        console.log(status)
+                        console.log("Call Back " + (numberOfSent-1));
                         var destinations = response.destinationAddresses;
 
 
                         var results = response.rows[0].elements;
                         for (var j = 0; j < results.length; j++) {
-                            var to = destinations[j];
-                            markers.forEach(function(marker){
-                                console.log("M:" + marker.getPosition())
-                                console.log("Ac:" + to);
-                                // I CANNOT ACCEPT THIS, WHY GOOGLE SENDS ME LOCATION BACK . NOPE!!!
-                                if(marker.getPosition() === to){
-                                    marker.setDuration(duration);
-                                    console.log("set one marker! OMG")
-                                }
-                            }); 
+                            /*markers.forEach(function(copy){
+                                marker.setDuration(duration);
+                            }); */
+                            copy[j].setDuration(results[j].duration.value);
+                        }
+                        if(numberOfSent < count){
+                            sendNext();
                         }
                     }
 

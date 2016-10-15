@@ -88,9 +88,10 @@ class Marker{
 		if(checkDM()){
 			if(this.duration == null){
 				returnValue = returnValue && false;
+				//console.log("Null makrer" + this.getPosition())
 			}else{
-				console.log(duration);
-				console.log(this.duration.value + " " + DM_time*60)
+				//console.log(duration);
+				//console.log(this.duration.value + " " + DM_time*60)
 				returnValue = returnValue && (this.duration.value <= DM_time*60);
 			}
 		}
@@ -115,9 +116,28 @@ function addMarker(lat, lng, title, info) {
             map: map,
             title: title
         });
+        var markerRep = new Marker(marker,info);
+        markers.push(markerRep);
+        if(checkDM()){
+        	   service.getDistanceMatrix(
+                      {
+                        origins: [DM_name],
+                        destinations: [marker.getPosition()],
+                        travelMode: DM_travel,
+                        avoidHighways: false,
+                        avoidTolls: false,
+                      }, callbackIndi);
 
-        markers.push(new Marker(marker,info));
+                function callbackIndi(response, status) {
+        
 
+                    var results = response.rows[0].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        marker.setDuration(results[j].duration.value);
+                    }
+                }
+
+        }
         bounds.extend(position);
         if(info != null){
             //Info windows
@@ -187,9 +207,12 @@ function shouldAddMarker(obj){
                
 }
 
-function filteMarkers(){
+function filteMarkers(bounds){
+	if(bounds == null){
+		bounds = map.getBounds();
+	}
 	markers.filter(function(marker){
-		return map.getBounds().contains(marker.getPosition());
+		return bounds.contains(marker.getPosition());
 	})
 }
 
