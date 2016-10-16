@@ -98,12 +98,6 @@
   }
 }
 
-/*  */
-#loading_btn {
-  position: absolute;
-  background-color: #fff;
-}
-
 /* search bar */
 #pac-input {
   position: absolute;
@@ -122,6 +116,16 @@
 
 .pac-container {
   font-family: Roboto;
+}
+
+/*  */
+#loading_btn {
+  position: absolute;
+  background-color: #4d90fe;
+  margin-top: 10px;
+  margin-left: 520px;
+  opacity: 1;
+  z-index: 1;
 }
 
 /* The side navigation menu */
