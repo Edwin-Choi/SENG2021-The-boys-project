@@ -40,6 +40,7 @@
             <span class="sr-only" >Toggle navigation</span>
             <span class="icon-bar"></span>
           </button>
+
           <a class="navbar-brand" href="#">Find My House</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -49,15 +50,16 @@
             </button>
 
             <button type="button" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-menu-hamburger" onclick="openNav()"></span>
+                <span class="glyphicon glyphicon-menu-hamburger" onclick="flipNav()"></span>
                 <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
-            </button>
-            
+            </button>  
+
             </span>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav> 
+
 
 	<!-- Where is css for this portion? -->
     <div id="mySidenav" class="sidenav" align="center">
@@ -89,8 +91,6 @@
               <input type="checkbox" class="cb" name="Lift" id="g01-0" onchange="chekcboxEvent()"/><span>lift</span>
 			</label>  
           </form>
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
       <a href="#">Price Interval</a>
          <input id = "min-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="min">
          <input id = "max-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="max">
@@ -138,6 +138,10 @@
         <input id = "pac-input" class="controls" type="text" placeholder="Enter address">
         <p id="helpSearch" class="speechSearch" >Enter locations here to find property nearby</p>
     </form>    
+
+    <!-- <button type="button" button id="loading_btn" class="btn btn-sm btn-primary" position="absolute">
+        <span class="glyphicon glyphicon-cloud-download"></span>
+    </button> --> 
     <!-- 
     <div class="input-group col-lg-4" style="position: absolute;">
         <input id = "pac-input" type="text" class="form-control" placeholder="Enter an address" />
@@ -400,6 +404,14 @@
         /* Set the width of the side navigation to 0 */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0px";
+        }
+
+        function flipNav() {
+          if (document.getElementById("mySidenav").style.width == "250px") {
+            document.getElementById("mySidenav").style.width = "0px";
+          } else {
+            document.getElementById("mySidenav").style.width = "250px";
+          }
         }
 
 		/* Open the sidenav */

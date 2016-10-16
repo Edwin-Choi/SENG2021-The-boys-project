@@ -98,6 +98,12 @@
   }
 }
 
+/*  */
+#loading_btn {
+  position: absolute;
+  background-color: #fff;
+}
+
 /* search bar */
 #pac-input {
   position: absolute;
@@ -201,15 +207,6 @@
 /* When you mouse over the navigation links, change their color */
 .help a:hover, .offcanvas a:focus{
     color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.help .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
