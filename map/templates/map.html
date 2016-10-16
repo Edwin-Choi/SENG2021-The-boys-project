@@ -414,6 +414,15 @@
           }
         }
 
+        function flipLoading() {
+          if (document.getElementById("loading_btn").style.opacity == "1") {
+            document.getElementById("loading_btn").style.opacity = "0";
+          } else {
+            document.getElementById("loading_btn").style.opacity = "1";
+          }
+
+        }
+
 		/* Open the sidenav */
 		function openHelp() {
 			document.getElementById("myHelp").style.width = "100%";
