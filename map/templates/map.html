@@ -97,17 +97,18 @@
       <a href="#">Price Interval</a>
          <input id = "min-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="min">
          <input id = "max-price" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="max">
-      <a href="#">Distance Matrix...</a>
-         <input id = "DM_name" class="controls" type="text" placeholder="Destination_Name">
+      <a href="#">Travel Time</a>
+         <input id = "DM_name" class="controls" type="text" placeholder="Destination Name">
          <input id = "DM_time" class="controls" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="minutes">
+         <br>
          <select id = "DM_travel">
           <option value="DRIVING">Drive</option>
           <option value="TRANSIT">Transit</option>
           <option value="WALKING">Walking</option>
          </select>
-
+         <br>
          <button class="btn btn-primary" type="button" onclick="dmSearch()" >Calculate</button>
-         <button class="btn btn-primary" type="button" onclick="dmSearchCancel()" >Calculate</button>
+         <button class="btn btn-primary" type="button" onclick="dmSearchCancel()" >Stop</button>
 
       <a href="#">Bedrooms</a>
          <select id = "NUM_bedrooms">
