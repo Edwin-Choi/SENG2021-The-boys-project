@@ -72,6 +72,11 @@
                 <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>  
 
+            <button type="button" button id="picture_btn" onclick="showPictures()" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Picture View" data-placement="left">
+                <span class="glyphicon glyphicon-camera"></span>
+            </button> 
+
+
             </span>
           </form>
         </div><!--/.navbar-collapse -->
@@ -156,12 +161,6 @@
     <button type="button" button id="loading_btn">
         <span class="glyphicon glyphicon-refresh"></span>
     </button> 
-
-    <div class="buttonHolder">
-      <button type="button" button id="picture_btn" onclick="showPictures();flipPic()">
-          <span class="glyphicon glyphicon-camera"></span>
-      </button> 
-    </div>
 
     <div id="pictures" class="container" style="display:none;">
     <!--The main div for carousel-->
