@@ -7,7 +7,7 @@ var pointer = 0;
 var appendTrack = [];
 
 function showPictures(){
-  var element = document.getElementById('myPictures');
+  var element = document.getElementById('pictures');
   console.log(element.style.display)
   if(element.style.display == null 
     || element.style.display === 'none'){
