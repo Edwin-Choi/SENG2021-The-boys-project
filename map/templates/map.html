@@ -156,12 +156,16 @@
     </button> 
 
     <div class="buttonHolder">
-      <button type="button" button id="picture_btn" onclick="flipPic()">
+      <button type="button" button id="picture_btn" onclick="showPictures()">
           <span class="glyphicon glyphicon-camera"></span>
       </button> 
+       <input type="button" name="answer" value="next" onclick="inc()">
+      <input type="button" name="answer" value="prev" onclick="dec()">
     </div>
 
-    <div id="myPictures" class="picturenav">
+    <div id="pictures" style="display:none;"> 
+          <ul id="list" class="slides">
+          </ul> 
       <!-- 
       ADD STUFF FOR PICTURES HERE MATT!
       -->
@@ -170,14 +174,6 @@
 <!-- GOOGLE MAP HERE-->
        
         <div id="map-canvas" class="map-canvas"></div>
-        <div id="pictures"  style="display:none;"> 
-              <ul id="list" class="slides">
-              </ul>
-        </div>
-        <input type="button" name="answer" value="ShowPics" onclick="showPictures()">
-        <input type="button" name="answer" value="next" onclick="inc()">
-        <input type="button" name="answer" value="prev" onclick="dec()">
-
 
         <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"></script>  
            <!--ALVA THIS IS WRONG, PYTHON IS GOING TO DO THIS LINK AUTOMATICALLY BY REPLACING SOMETHING IN BACKEND !!!-->
