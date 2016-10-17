@@ -46,7 +46,8 @@ def map(request):
     showHelp = None;
     if request.COOKIES.get("show_help") is None:
         showHelp = 1;
-    response = render_to_response('map.html', {'pois': position, 'loc' : loc,'showHelp' : showHelp})
+    print(showHelp)
+    response = render(request,'map.html', {'pois': position, 'loc' : loc,'showHelp' : showHelp})
     response.set_cookie("show_help","1")
     return response
 
