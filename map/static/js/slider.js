@@ -51,7 +51,7 @@ function render(){
     var picture = marker.assetInfo.img_url;
     var li = document.createElement("li");
     ul.appendChild(li);
-    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img src="'+ picture +'" /> </a>';
+    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img src="'+ picture +'" style="width:128px;height:128px;"/> </a>';
   }
 }
 
