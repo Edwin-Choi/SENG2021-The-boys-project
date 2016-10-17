@@ -70,7 +70,7 @@ class Marker{
 			var pass = false;
 			for(var j = 0 ; j < words.length ; j ++){
 				for(var i = 0 ; i < objWords.length ; i ++){
-					if(objWords[i].toLowercase() === words[j].toLowercase()){
+					if(objWords[i].toLowerCase() === words[j].toLowerCase()){
 						pass = true;
 						break;
 					}
