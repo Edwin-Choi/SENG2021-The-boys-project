@@ -61,7 +61,8 @@ function addSliderElement(marker){
     return;
   }
   var picture = marker.assetInfo.img_url;
-  if(picture === "http://resources.nestimg.com/nestoria/img/cs4.2_v1.png"){
+  if(picture === "http://resources.nestimg.com/nestoria/img/cs4.2_v1.png" 
+      && marker.shouldShow()){
     return;
   }
   cache.push(marker);
