@@ -254,35 +254,20 @@
   }
 }
 </style>
+    <script>
+    $(document).ready(function(){   
 
+      $("#fruitscarousel").on('slide.bs.carousel', function () {
+          inc();
+      });
+    });
+    </script>
   
       <!-- 
       <input type="button" name="answer" value="next" onclick="inc()">
       <input type="button" name="answer" value="prev" onclick="dec()">
     </div>
       -->
-
-      <script>
-        jQuery(document).ready(function() {
-                
-          jQuery('.carousel[data-type="multi"] .item').each(function(){
-            var next = jQuery(this).next();
-            if (!next.length) {
-              next = jQuery(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo(jQuery(this));
-            
-            for (var i=0;i<2;i++) {
-              next=next.next();
-              if (!next.length) {
-                next = jQuery(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-            }
-          });
-                
-        });
-      </script>
 
 <!-- GOOGLE MAP HERE-->
        
