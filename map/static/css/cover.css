@@ -175,3 +175,14 @@ body {
   text-overflow: ellipsis;
   text-align: center;
 }
+
+#globe {
+  width: 150px;
+  float: right;
+}
+
+#search_settings {
+  width: 120px;
+  float: right;
+  margin-right: -8px;
+}
