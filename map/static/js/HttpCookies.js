@@ -58,7 +58,7 @@ function sendHTTPPost(control,fit){
                     addMarker(responseArray[i].latitude,responseArray[i].longitude,responseArray[i].title,responseArray[i]);
 
                 }
-                
+                flipLoading();
             }
             if(fit == 1){
                 map.fitBounds(bounds);

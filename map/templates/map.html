@@ -318,8 +318,10 @@
                 */
                 setInterval(function(){
                     if(lastBounds != currentBounds){
+                        flipLoading();
                         updateMarkersByBound(currentBounds);
                         lastBounds = currentBounds;
+
                     }
                     onUpdate();
                 }, 1000);
