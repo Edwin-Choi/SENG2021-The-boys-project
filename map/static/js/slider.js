@@ -46,13 +46,15 @@ function dec(){
 function render(){
   var ul = document.getElementById("list");
   ul.innerHTML = "";
+  var li = document.createElement("li");
+  li.innerHTML = '<div id="pictures">';
   for(var i = 0; i < 5 ; i ++){
     var marker = cache[currFrom + i];
     var picture = marker.assetInfo.img_url;
-    var li = document.createElement("li");
     ul.appendChild(li);
-    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img src="'+ picture +'" style="width:128px;height:128px;"/> </a>';
+    li.innerHTML = li.innerHTML + '<a href="'+ marker.assetInfo.lister_url+'"> <img src="'+ picture +'" style="width:128px;height:128px;"/> </a>';
   }
+  li.innerHTML = li.innerHTML + '</div>';
 }
 
 
