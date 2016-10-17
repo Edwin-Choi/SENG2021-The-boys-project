@@ -169,7 +169,8 @@ body {
 #ss {
   font-size: 22px;
   font-weight: 300;
-  width: 400px;
+  width: 600px;
   color: black;
   text-overflow: ellipsis;
+  text-align: center;
 }
