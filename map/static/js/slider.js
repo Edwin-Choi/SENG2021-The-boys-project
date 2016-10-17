@@ -1,6 +1,7 @@
 
 
 var cache = [];
+var link_marker = {}; 
 var currFrom = 0;
 
 
@@ -52,11 +53,22 @@ function render(){
     var marker = cache[currFrom + i];
     var picture = marker.assetInfo.img_url;
     ul.appendChild(li);
-    li.innerHTML = li.innerHTML + '<a href="'+ marker.assetInfo.lister_url+'"> <img src="'+ picture +'" style="width:128px;height:128px;"/> </a>';
+    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img data-toggle="tooltip" title=Name'+ marker.assetInfo.datasource_name 
+                      +"1&#013;Price: "+ marker.assetInfo.price
+                      ' src="'+ picture +'" style="width:128px;height:128px;" onmouseover="hoverPic(this)"/> </a>';
   }
   li.innerHTML = li.innerHTML + '</div>';
 }
 
+
+function hoverPic(pic){
+  if(link_marker[pic.src]){
+    var marker = link_marker[pic.src];
+
+
+  } 
+
+}
 
 function addSliderElement(marker){
   if(contains(cache,marker)){
@@ -67,6 +79,7 @@ function addSliderElement(marker){
       && marker.shouldShow()){
     return;
   }
+  link_marker[picture] = marker;
   cache.push(marker);
 }
 
