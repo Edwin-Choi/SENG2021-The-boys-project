@@ -36,6 +36,9 @@
    <nav class="navbar-default navbar-top">
       <div class="container">
         <div class="navbar-header">
+          {% load static %}
+          <img src="{% static "images/logo.jpg" %}" alt="logo" img id="logo"/>
+
           <button type="reset" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only" >Toggle navigation</span>
             <span class="icon-bar"></span>
