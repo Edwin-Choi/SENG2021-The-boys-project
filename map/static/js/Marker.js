@@ -112,6 +112,14 @@ class Marker{
 		return returnValue;
 	}
 
+	pop(){
+		if (this.googleMarker.getAnimation() !== null) {
+		    this.googleMarker.setAnimation(null);
+		  } else {
+		    this.googleMarker.setAnimation(google.maps.Animation.DROP);
+		  }
+	}
+
 }
 
 

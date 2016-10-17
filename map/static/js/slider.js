@@ -5,6 +5,8 @@ var link_marker = {};
 var currFrom = 0;
 var pointer = 0;
 var appendTrack = [];
+var lastHover = null;
+
 
 function showPictures(){
   var element = document.getElementById('pictures');
@@ -87,7 +89,6 @@ function render(){
   
 
  function boundStuff(){
-   console.log("hehe!")
    appendTrack.forEach(function(t){
       t.remove();
    });
@@ -113,8 +114,16 @@ function render(){
 function hoverPic(pic){
   if(link_marker[pic.src]){
     var marker = link_marker[pic.src];
+    
+    if(lastHover !== marker){
+       marker.pop();
+       if(lastHover != null){
+          lastHover.pop();
 
-
+       }
+    }
+    
+    lastHover = marker;
   } 
 
 }
