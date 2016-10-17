@@ -52,7 +52,7 @@ function render(){
     var picture = marker.assetInfo.img_url;
     var li = document.createElement("li");
     ul.appendChild(li);
-    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img data-toggle="tooltip" title=Name:'+ marker.assetInfo.datasource_name  +" 1&#013;Price: "+ marker.assetInfo.price + ' src="'+ picture +'" style="width:128px;height:128px;" onmouseover="hoverPic(this)"/> </a>';
+    li.innerHTML = '<a href="'+ marker.assetInfo.lister_url+'"> <img data-toggle="tooltip" title=Name:'+ marker.assetInfo.datasource_name  +"1&#013;Price: "+ marker.assetInfo.price + ' src="'+ picture +'" style="width:128px;height:128px;" onmouseover="hoverPic(this)"/> </a>';
   }
 }
 
