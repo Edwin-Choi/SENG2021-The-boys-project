@@ -24,6 +24,7 @@ class Marker{
 			if(this.googleMarker.getMap() != map){
 				this.googleMarker.setMap(map);
 			}
+			addSliderElement(this);
 		}else{
 			if(this.googleMarker.getMap() != null){
 				this.googleMarker.setMap(null);

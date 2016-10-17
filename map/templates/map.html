@@ -25,9 +25,23 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- external libs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="../static/js/jquery.flexslider.js"></script>
+         <!-- Syntax Highlighter -->
+  <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+
+  <!-- Demo CSS -->
+  <link rel="stylesheet" href="../static/css/flexslider.css" type="text/css" media="screen" />
+
+  <!-- Modernizr -->
+  <script src="../static/js/modernizr.js"></script>
     <!--  The functional JS  -->
+    <script src="../static/js/slider.js"></script>
     <script src="../static/js/Marker.js"></script>
     <script src="../static/js/HttpCookies.js"></script>
+
 
   </head>
 
@@ -156,8 +170,19 @@
     -->
 
 <!-- GOOGLE MAP HERE-->
+       
 
         <div id="map-canvas" class="map-canvas"></div>
+         <div id="pictures"  style="display:none;"> 
+             <section class="slider">
+              <div class="carousel">
+                <ul id="list" class="slides">
+                </ul>
+              </div>
+            </section>
+          </div>
+          <input type="button" name="answer" value="ShowPics" onclick="showPictures()">
+
 
         <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"></script>  
            <!--ALVA THIS IS WRONG, PYTHON IS GOING TO DO THIS LINK AUTOMATICALLY BY REPLACING SOMETHING IN BACKEND !!!-->
@@ -174,6 +199,8 @@
             var pressed = 0;
             var DM_searchingBox = new google.maps.places.SearchBox(document.getElementById('DM_name'));                
 
+
+          
             function getAllMarkersPosition(){
                 var copy = [];
                 markers.forEach(function(m){
@@ -434,7 +461,7 @@
 
 		/* Open the sidenav */
 		function openHelp() {
-			document.getElementById("myHelp").style.width = "100%";
+			  document.getElementById("myHelp").style.width = "100%";
 		    document.getElementById("helpText").style.opacity = "1";
 		    document.getElementById("helpSearch").style.opacity = "1";
 		    document.getElementById("helpMarker").style.opacity = "1";
