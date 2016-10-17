@@ -146,7 +146,7 @@ function addMarker(lat, lng, title, info) {
             '<div id="siteNotice">'+
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">'+ info.title +'</h1>'+
-            '<img src='+ info.img_url +' style="width:304px;height:228px;">'+
+            '<img src='+ info.img_url +' style="width:304px;height:228px;float:right;">'+
             '<div id="bodyContent">'+
             '<p>'+ info.summary + ' </p>'+
             '<p> Price Starting: '+ info.price + " "+ info.price_currency + ' </p>'+
