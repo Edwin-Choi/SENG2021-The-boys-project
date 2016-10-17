@@ -180,9 +180,9 @@ function updateMarkers(name,fit){
 /*
    fetch data from servr by bound
 */
-function updateMarkersByBound(bound){
+function updateMarkersByBound(bound,fit){
     sendHTTPPost("&south_west=" + bound.getSouthWest().lat() + "," + bound.getSouthWest().lng() 
-                 + "&north_east=" + bound.getNorthEast().lat() + "," + bound.getNorthEast().lng(),0);
+                 + "&north_east=" + bound.getNorthEast().lat() + "," + bound.getNorthEast().lng(),fit);
     onUpdate();
 }
 

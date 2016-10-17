@@ -59,9 +59,10 @@
             <h1 class="cover-heading">Find My (New) House.</h1>
             <p class="lead">Find my house provides an easy solution for first home buyers to conveniently locate houses in the UK!<br>
             	Enter an address below to get started, or scoll down to see the feautures!</p>
+            <input id = "ss" type="text" placeholder="type a area name or keywords">
+
             <p class="lead">
-              <input id = "ss" class="controls" type="text" placeholder="type a area name or keywords">
-              <a href="map" class="btn btn-lg btn-default">Go!</a>
+              <a id="theID" href="map?&loc=" class="btn btn-lg btn-default" onclick="submitClick()">Go!</a>
             </p>
           </div>
 
@@ -116,7 +117,19 @@
   <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"></script>  
   <!-- google Map link & submit -->
   <script type="text/javascript">
-      var warpBar = new new google.maps.places.SearchBox(document.getElementById('ss'));
+        var warpBar = new google.maps.places.SearchBox(document.getElementById('ss'));
+
+        function submitClick(){
+          var places = warpBar.getPlaces();
+          if (places.length == 0) {
+              alert("invalid location!");
+              return;
+          }
+           var location = places[0].name;
+           var button = document.getElementById('theID');
+           button.href = button.href + location;
+        }
+
 
 
   </script>>
