@@ -4,6 +4,7 @@ from .models import Position
 import urllib.request
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render_to_response
 
 
 class AppURLopener(urllib.request.FancyURLopener):
@@ -42,5 +43,10 @@ def map(request):
             loc = request.GET.get('loc','')
         print(request.GET.get('loc',''))
         position = Position.objects.all();
-    return render(request, 'map.html', {'pois': position, 'loc' : loc})
+    showHelp = None;
+    if request.COOKIES.get("show_help") is None:
+        showHelp = 1;
+    response = render_to_response('map.html', {'pois': position, 'loc' : loc,'showHelp' : showHelp})
+    response.set_cookie("show_help","1")
+    return response
 

@@ -255,31 +255,13 @@
   }
 }
 </style>
-    <script>
-    $(document).ready(function(){   
-
-<<<<<<< HEAD
-      <script>
-        jQuery(document).ready(function() {
-                
-          jQuery('.carousel[data-type="multi"] .item').each(function(){
-            var next = jQuery(this).next();
-            if (!next.length) {
-              next = jQuery(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo(jQuery(this));
-            
-            for (var i=0;i<2;i++) {
-              next=next.next();
-              if (!next.length) {
-                next = jQuery(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
-            }
-          });
-                
+   <script>
+      $(document).ready(function(){   
+        $("#fruitscarousel").on('slide.bs.carousel', function () {
+            inc();
         });
-      </script>
+      });
+    </script>
 
 <!-- GOOGLE MAP HERE-->
        
@@ -440,8 +422,12 @@
                 map = new google.maps.Map(document.getElementById('map-canvas'));
                 bounds = new google.maps.LatLngBounds();
                 var loc = "{{loc}}";
+                var help = "{{showHelp}}"
                 if(!loc){
                   loc = "Retford";
+                }
+                if(help){
+                  openHelp();
                 }
                 map.fitBounds(bounds);
                 updateMarkers(loc,1);
