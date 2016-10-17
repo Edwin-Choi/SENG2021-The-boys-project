@@ -60,6 +60,7 @@ class Marker{
 		var returnValue = true;
 		var minPrice = document.getElementById("min-price").value;
         var maxPrice = document.getElementById("max-price").value;
+        var bedRoom = document.getElementById("NUM_bedrooms").value;
 		//keywords
 		if(words.length > 0){
 			var objWords = this.assetInfo.keywords;
@@ -96,7 +97,18 @@ class Marker{
 				returnValue = returnValue && (this.duration.value <= DM_time*60);
 			}
 		}
-
+		//console.log(bedRoom +" " + this.assetInfo.bedroom_number);
+		if(this.assetInfo.bedroom_number  != null){
+			if(bedRoom ==="-"){
+				//do nothing
+			}else if(bedRoom === "5+"){
+				returnValue = returnValue && (this.assetInfo.bedroom_number  > 5);
+			}else{
+				returnValue = returnValue && (this.assetInfo.bedroom_number >= bedRoom);
+			}
+		}else{
+			returnValue = false;
+		}
 		return returnValue;
 	}
 
