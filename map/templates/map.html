@@ -311,9 +311,10 @@
             function initialize() {
                 map = new google.maps.Map(document.getElementById('map-canvas'));
                 bounds = new google.maps.LatLngBounds();
+                var loc = "{{loc}}";
 
                 map.fitBounds(bounds);
-                updateMarkers("Retford",1);
+                updateMarkers(loc,1);
                 
                 /*
                     set up a timer to keep tracking bound changes. 
