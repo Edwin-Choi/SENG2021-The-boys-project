@@ -49,11 +49,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
             <button type="reset" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-info-sign" onclick="openHelp()"></span>
+                <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Help" data-placement="left" onclick="openHelp()"></span>
             </button>
 
             <button type="button" class="btn btn-sm btn-primary">
-                <span class="glyphicon glyphicon-menu-hamburger" onclick="flipNav()"></span>
+                <span class="glyphicon glyphicon-menu-hamburger" data-toggle="tooltip" title="Search Settings" data-placement="left" onclick="flipNav()"></span>
                 <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>  
 
@@ -465,6 +465,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../static/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../static/js/bootstrap.min.js"></script>
+
+	<!-- Script for aesthetic tooltips -->    
+	<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+	</script>
+    
+    
   </body>
 </html>
 
