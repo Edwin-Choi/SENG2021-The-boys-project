@@ -9,7 +9,7 @@ var lastHover = null;
 
 
 function showPictures(){
-  var element = document.getElementById('pictures');
+  var element = document.getElementById('myPictures');
   console.log(element.style.display)
   if(element.style.display == null 
     || element.style.display === 'none'){

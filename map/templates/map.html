@@ -72,6 +72,11 @@
                 <p id="helpText" class="speech" >The menu icon gives <br> further search options</p>
             </button>  
 
+            <button type="button" button id="picture_btn" onclick="showPictures()" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Picture View" data-placement="left">
+                <span class="glyphicon glyphicon-camera"></span>
+            </button> 
+
+
             </span>
           </form>
         </div><!--/.navbar-collapse -->
@@ -157,13 +162,7 @@
         <span class="glyphicon glyphicon-refresh"></span>
     </button> 
 
-    <div class="buttonHolder">
-      <button type="button" button id="picture_btn" onclick="showPictures()">
-          <span class="glyphicon glyphicon-camera"></span>
-      </button> 
-    </div>
-
-    <div id=pictures class="container" style="display:none;">
+    <div id="pictures" class="container" style="display:none;">
     <!--The main div for carousel-->
     <div class="container text-center">
     <div class="carousel slide row" data-ride="carousel" data-type="multi" data-interval="2000" id="fruitscarousel">
@@ -538,11 +537,11 @@
         }
 
         function flipPic() {
-          if (document.getElementById("myPictures").style.height == "0px") {
-            document.getElementById("myPictures").style.height = "150px";
+          if (document.getElementById("pictures").style.height == "0px") {
+            document.getElementById("pictures").style.height = "150px";
             document.getElementById("picture_btn").style.marginBottom = "150px";
           } else {
-            document.getElementById("myPictures").style.height = "0px";
+            document.getElementById("pictures").style.height = "0px";
             document.getElementById("picture_btn").style.marginBottom = "0px";
           }
         }
