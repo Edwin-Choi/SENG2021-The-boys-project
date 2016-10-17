@@ -165,3 +165,11 @@ body {
 #logo {
   width: 100px;
 }
+
+#ss {
+  font-size: 22px;
+  font-weight: 300;
+  width: 400px;
+  color: black;
+  text-overflow: ellipsis;
+}
