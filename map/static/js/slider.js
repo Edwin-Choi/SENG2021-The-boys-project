@@ -3,7 +3,7 @@
 var cache = [];
 var link_marker = {}; 
 var currFrom = 0;
-
+var pointer = 0;
 
 function showPictures(){
   var element = document.getElementById('pictures');
@@ -22,40 +22,64 @@ function showPictures(){
 
 
 function inc(){
+  pointer = pointer + 1;
+  if(pointer > 4){
   if(cache){
-    if(cache.length > currFrom + 5){
-      currFrom = currFrom + 5;
+      if(cache.length > currFrom + 5){
+        currFrom = currFrom + 5;
+      }else{
+        currFrom = cache.length - 5;
+      }
     }else{
-      currFrom = cache.length - 5;
+      currFrom = 0;
     }
-  }else{
-    currFrom = 0;
+    render();
   }
-  render();
 }
 
 function dec(){
+  pointer = pointer -1;
+  if(pointer < -4){
     if(currFrom -5 >=0){
       currFrom = currFrom-5;
     }else{
       currFrom = 0;
     }
     render();
+  }
 }
 
 
 function render(){
   var ul = document.getElementById("list");
-  ul.innerHTML = "";
-  var li = document.createElement("li");
-  li.innerHTML = '<div id="pictures">';
-  for(var i = 0; i < 5 ; i ++){
+  var childs = ul.children;
+  pointer = 0;
+  for(var i = 0; i < childs.length ; i ++){
+
     var marker = cache[currFrom + i];
     var picture = marker.assetInfo.img_url;
-    ul.appendChild(li);
-    li.innerHTML = li.innerHTML + '<a href="'+ marker.assetInfo.lister_url+'"> <img data-toggle="tooltip" title=Name:'+ marker.assetInfo.datasource_name  +" 1&#013;Price: "+ marker.assetInfo.price + ' src="'+ picture +'" style="width:128px;height:128px;" onmouseover="hoverPic(this)"/> </a>';
+    var urlClick = childs[i].children[0].children[0];
+    var img = urlClick.children[0];
+    img.src = picture;
+    img.title = 'title=Name:'+ marker.assetInfo.datasource_name  +'" 1&#013;Price: "'+ marker.assetInfo.price;
+    urlClick.href = marker.assetInfo.lister_url;
+
+    /*var element = document.createElement("div");
+    var marker = cache[currFrom + i];
+    var picture = marker.assetInfo.img_url;
+    var start = "";
+    if(i == 0){
+      start = '<div class="item active"> <div class="col-md-3 col-sm-4 col-xs-12"> '
+    }else{
+      start = '<div class="item"> <div class="col-md-3 col-sm-4 col-xs-12"> '
+    }
+
+    var end = ' class="img-responsive"></a></div></div>'
+    var image = '<a href="'+ marker.assetInfo.lister_url+'"> <img data-toggle="tooltip" title=Name:'+ marker.assetInfo.datasource_name  +" 1&#013;Price: "+ marker.assetInfo.price + ' src="'+ picture +'" style="width:128px;height:128px;" onmouseover="hoverPic(this)';
+    element.innerHTML = start + image + end;
+
+    ul.appendChild(element);*/
   }
-  li.innerHTML = li.innerHTML + '</div>';
 }
 
 
