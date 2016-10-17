@@ -192,6 +192,8 @@ function updateMarkersByBound(bound,fit){
 
 */
 function onUpdate(){
+	cache = [];
+	link_marker = {};
 	markers.forEach(function(marker){
 		marker.update();
 	});
