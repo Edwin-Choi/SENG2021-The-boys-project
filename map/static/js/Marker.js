@@ -11,13 +11,16 @@
 
 
 class Marker{
-	constructor(googleMarker, assetInfo){
+	constructor(googleMarker, assetInfo,infoWindow){
 		this.googleMarker = googleMarker;
 		this.assetInfo = assetInfo;
+		this.info = infoWindow;
 	}
 
 
-	
+	showInfo(){
+        this.info.open(map, this.googleMarker);
+	}
 
 	update(){
 		if(this.shouldShow()){	
@@ -137,29 +140,6 @@ function addMarker(lat, lng, title, info) {
             map: map,
             title: title
         });
-        var markerRep = new Marker(marker,info);
-        markers.push(markerRep);
-        if(checkDM()){
-        	   service.getDistanceMatrix(
-                      {
-                        origins: [DM_name],
-                        destinations: [marker.getPosition()],
-                        travelMode: DM_travel,
-                        avoidHighways: false,
-                        avoidTolls: false,
-                      }, callbackIndi);
-
-                function callbackIndi(response, status) {
-        
-
-                    var results = response.rows[0].elements;
-                    for (var j = 0; j < results.length; j++) {
-                        marker.setDuration(results[j].duration.value);
-                    }
-                }
-
-        }
-        bounds.extend(position);
         if(info != null){
             //Info windows
             var contentString = '<div id="content">'+
@@ -183,6 +163,29 @@ function addMarker(lat, lng, title, info) {
             });
         }
          
+        var markerRep = new Marker(marker,info,infowindow);
+        markers.push(markerRep);
+        if(checkDM()){
+        	   service.getDistanceMatrix(
+                      {
+                        origins: [DM_name],
+                        destinations: [marker.getPosition()],
+                        travelMode: DM_travel,
+                        avoidHighways: false,
+                        avoidTolls: false,
+                      }, callbackIndi);
+
+                function callbackIndi(response, status) {
+        
+
+                    var results = response.rows[0].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        marker.setDuration(results[j].duration.value);
+                    }
+                }
+
+        }
+        bounds.extend(position);
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });

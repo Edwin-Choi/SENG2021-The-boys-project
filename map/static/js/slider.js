@@ -9,8 +9,7 @@ var lastHover = null;
 
 
 function showPictures(){
-  var element = document.getElementById('myPictures');
-  console.log(element.style.display)
+  var element = document.getElementById('pictures');
   if(element.style.display == null 
     || element.style.display === 'none'){
       element.style.display = "inline";
@@ -65,7 +64,7 @@ function render(){
     var img = urlClick.children[0];
     img.src = picture;
     img.title = "Name: " + marker.assetInfo.datasource_name  +'  |  Price: '+ marker.assetInfo.price;
-    urlClick.href = marker.assetInfo.lister_url;
+    //urlClick.href = marker.assetInfo.lister_url;
 
     /*var element = document.createElement("div");
     var marker = cache[currFrom + i];
@@ -110,6 +109,13 @@ function render(){
     });
 
   }
+
+function clickPic(pic){
+  if(link_marker[pic.src]){
+    var marker = link_marker[pic.src];
+    marker.showInfo();
+  }
+}
 
 function hoverPic(pic){
   if(link_marker[pic.src]){
