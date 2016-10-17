@@ -37,7 +37,7 @@ def map(request):
         response = opener.open(url)
         return HttpResponse(response)
     else:
-        loc = "loc"
+        loc = "Retford"
         if request.GET.get('loc',''):  
             loc = request.GET.get('loc','')
         print(request.GET.get('loc',''))
