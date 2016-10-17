@@ -62,7 +62,7 @@ function render(){
     var urlClick = childs[i].children[0].children[0];
     var img = urlClick.children[0];
     img.src = picture;
-    img.title = 'title=Name:'+ marker.assetInfo.datasource_name  +'" 1&#013;Price: "'+ marker.assetInfo.price;
+    img.title = marker.assetInfo.datasource_name  +'" 1&#013;Price: "'+ marker.assetInfo.price;
     urlClick.href = marker.assetInfo.lister_url;
 
     /*var element = document.createElement("div");
