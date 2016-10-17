@@ -139,14 +139,7 @@
     <div id="myHelp" class="help" onclick="closeHelp()">
       <a href="javascript:void(0)" class="closebtn" onclick="closeHelp()">&times;</a>
     </div>
-    <!-- Use any element to open the sidenav 
-    <span onclick="openNav()">open</span> -->
     
-
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page 
-    <div id="main">
-    </div>
-    -->
     <p id="helpMarker" class="speechMarker" >Click markers to view property information</p>
     <p id="helpZoom" class="speechZoom" >Click these buttons to change the zoom level.</p>
 	<p id="helpStreet" class="speechStreet" >Drag the person onto the street to enter streetview.</p>   
@@ -161,22 +154,19 @@
     <button type="button" button id="loading_btn">
         <span class="glyphicon glyphicon-refresh"></span>
     </button> 
-    <!-- 
-    <div class="input-group col-lg-4" style="position: absolute;">
-        <input id = "pac-input" type="text" class="form-control" placeholder="Enter an address" />
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">Search</button>
-        </span>
-    </div>
-    -->
 
-    <button type="button" button id="picture_btn">
-        <span class="glyphicon glyphicon-refresh"></span>
-    </button> 
+    <div class="buttonHolder">
+      <button type="button" button id="picture_btn" onclick="flipPic()">
+          <span class="glyphicon glyphicon-camera"></span>
+      </button> 
+    </div>
+
+    <div id="myPictures" class="picturenav">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+    </div>
 
 <!-- GOOGLE MAP HERE-->
        
-
         <div id="map-canvas" class="map-canvas"></div>
          <div id="pictures"  style="display:none;"> 
              <section class="slider">
@@ -454,6 +444,16 @@
             document.getElementById("mySidenav").style.width = "0px";
           } else {
             document.getElementById("mySidenav").style.width = "250px";
+          }
+        }
+
+        function flipPic() {
+          if (document.getElementById("myPictures").style.height == "0px") {
+            document.getElementById("myPictures").style.height = "150px";
+            document.getElementById("picture_btn").style.marginBottom = "150px";
+          } else {
+            document.getElementById("myPictures").style.height = "0px";
+            document.getElementById("picture_btn").style.marginBottom = "0px";
           }
         }
 
