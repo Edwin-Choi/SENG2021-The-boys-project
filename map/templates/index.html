@@ -56,7 +56,8 @@
             <p class="lead">Find my house is the best website<br> for you to find a new house in whatever location you want!<br>
             	Try it by selecting the button and entering an address!</p>
             <p class="lead">
-              <a href="map" class="btn btn-lg btn-default">Try it</a>
+              <input id = "ss" class="controls" type="text" placeholder="type a area name or keywords">
+              <a href="map" class="btn btn-lg btn-default">Go!</a>
             </p>
           </div>
 
@@ -107,6 +108,14 @@
         </div>
       </section>
     </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?AIzaSyBbwRTFPSOWmk49COJJFiMu8Ezpobh_z_k&libraries=places"></script>  
+  <!-- google Map link & submit -->
+  <script type="text/javascript">
+      var warpBar = new new google.maps.places.SearchBox(document.getElementById('ss'));
+
+
+  </script>>
 
  <!-- FlexSlider -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
