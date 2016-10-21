@@ -66,7 +66,7 @@ class Marker{
         var bedRoom = document.getElementById("NUM_bedrooms").value;
 		//keywords
 		if(words.length > 0){
-			var objWords = this.assetInfo.keywords;
+			var objWords = this.assetInfo.keywords.split(", ");
 			var pass = false;
 			for(var j = 0 ; j < words.length ; j ++){
 				for(var i = 0 ; i < objWords.length ; i ++){
