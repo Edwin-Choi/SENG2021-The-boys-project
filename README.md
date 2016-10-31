@@ -10,8 +10,4 @@ TODO: Write a project description
 
 3.run the server as Djangle tutorial says.
 
-
-
-FIRST DEMO IS ON TUESDAY, 20TH OF SEPT. 
-
-WE NEED DO GET SOMETHING DONE SOON.
+Hello JJ :D Sorry for the mess 
